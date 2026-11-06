@@ -50,7 +50,7 @@ const Projects = () => {
       github:
         "https://github.com/davidmgr-collab/david-portfolio",
       demo:
-        "https://davidmugiraneza.vercel.app",
+        "https://david-mugiraneza-dev-portfolio.netlify.app/",
       image: "/portfolio.png",
     },
   ];
