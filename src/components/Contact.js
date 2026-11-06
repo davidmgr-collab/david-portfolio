@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const form = useRef();
@@ -30,6 +31,12 @@ const Contact = () => {
         setStatus("Failed to send message ❌");
         setLoading(false);
       });
+  };
+
+  const openWhatsApp = () => {
+    const phone = "250738998033"; // International format without '+'
+    const text = encodeURIComponent("Hello David, I saw your portfolio and I'd like to talk about a project.");
+    window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
   };
 
   return (
@@ -71,7 +78,7 @@ const Contact = () => {
 
       {/* MODAL */}
       {showForm && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 sm:p-6">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 sm:p-6 backdrop-blur-sm">
           <div
             className="
               bg-white dark:bg-[#111c33]
@@ -81,71 +88,80 @@ const Contact = () => {
               shadow-2xl
               transition-colors
               max-h-[90vh] overflow-y-auto
+              flex flex-col gap-6
             "
           >
             {/* Header */}
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-4">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                Send Message
+                Say Hello David👋
               </h3>
 
               <button
                 onClick={() => setShowForm(false)}
-                className="text-gray-400 text-3xl hover:text-gray-800 dark:hover:text-white leading-none"
+                className="text-gray-400 text-3xl hover:text-gray-800 dark:hover:text-white leading-none transition"
               >
                 ×
               </button>
             </div>
 
-            {/* Status */}
+            {/* Status Message */}
             {status && (
-              <p className="text-cyan-400 text-sm sm:text-base mb-4">{status}</p>
+              <p className="text-cyan-400 text-sm sm:text-base text-center font-medium bg-cyan-500/10 py-2 rounded-lg border border-cyan-500/20">
+                {status}
+              </p>
             )}
 
-            {/* Form */}
-            <form ref={form} onSubmit={sendEmail} className="space-y-4 sm:space-y-5">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="
-                  w-full p-3.5 sm:p-4 rounded-xl text-sm sm:text-base
-                  bg-gray-100 dark:bg-[#0a1628]
-                  text-gray-900 dark:text-white
-                  border border-gray-300 dark:border-gray-700
-                  focus:border-cyan-400 outline-none
-                "
-              />
+            {/* Email Form */}
+            <form ref={form} onSubmit={sendEmail} className="space-y-4">
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="
+                    w-full p-3.5 sm:p-4 rounded-xl text-sm sm:text-base
+                    bg-gray-100 dark:bg-[#0a1628]
+                    text-gray-900 dark:text-white
+                    border border-gray-300 dark:border-gray-700
+                    focus:border-cyan-400 outline-none transition
+                  "
+                />
+              </div>
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="
-                  w-full p-3.5 sm:p-4 rounded-xl text-sm sm:text-base
-                  bg-gray-100 dark:bg-[#0a1628]
-                  text-gray-900 dark:text-white
-                  border border-gray-300 dark:border-gray-700
-                  focus:border-cyan-400 outline-none
-                "
-              />
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="
+                    w-full p-3.5 sm:p-4 rounded-xl text-sm sm:text-base
+                    bg-gray-100 dark:bg-[#0a1628]
+                    text-gray-900 dark:text-white
+                    border border-gray-300 dark:border-gray-700
+                    focus:border-cyan-400 outline-none transition
+                  "
+                />
+              </div>
 
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Describe your project..."
-                required
-                className="
-                  w-full p-3.5 sm:p-4 rounded-xl text-sm sm:text-base
-                  bg-gray-100 dark:bg-[#0a1628]
-                  text-gray-900 dark:text-white
-                  border border-gray-300 dark:border-gray-700
-                  focus:border-cyan-400 outline-none
-                  resize-none
-                "
-              ></textarea>
+              <div>
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="Describe your project..."
+                  required
+                  className="
+                    w-full p-3.5 sm:p-4 rounded-xl text-sm sm:text-base
+                    bg-gray-100 dark:bg-[#0a1628]
+                    text-gray-900 dark:text-white
+                    border border-gray-300 dark:border-gray-700
+                    focus:border-cyan-400 outline-none transition
+                    resize-none
+                  "
+                ></textarea>
+              </div>
 
               <button
                 type="submit"
@@ -154,13 +170,42 @@ const Contact = () => {
                   w-full py-3.5 sm:py-4 rounded-xl text-sm sm:text-base
                   bg-cyan-500 hover:bg-cyan-400
                   text-white dark:text-black
-                  font-bold transition
+                  font-bold transition shadow-md
                   disabled:opacity-50
                 "
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? "Sending..." : "Send Email Message"}
               </button>
             </form>
+
+            {/* Divider */}
+            <div className="flex items-center my-1">
+              <div className="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
+              <span className="px-3 text-xs sm:text-sm text-gray-400 uppercase">Or</span>
+              <div className="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
+            </div>
+
+            {/* WhatsApp Button */}
+            <button
+              onClick={openWhatsApp}
+              className="
+                w-full
+                bg-emerald-600
+                hover:bg-emerald-500
+                text-white
+                font-bold
+                py-3.5 sm:py-4
+                rounded-xl
+                transition
+                flex items-center justify-center gap-2
+                text-sm sm:text-base
+                shadow-md
+              "
+            >
+              <FaWhatsapp size={20} />
+              <span>Chat on WhatsApp</span>
+            </button>
+
           </div>
         </div>
       )}
