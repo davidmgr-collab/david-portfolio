@@ -4,9 +4,9 @@ import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // ✅ default false
+  const [darkMode, setDarkMode] = useState(false);
 
-  // ✅ Load theme properly
+  // Load theme properly
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
 
@@ -19,14 +19,14 @@ const Navbar = () => {
     }
   }, []);
 
-  // ✅ Scroll shadow + blur
+  // Scroll shadow + blur
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ Toggle Theme
+  // Toggle Theme
   const toggleTheme = () => {
     if (darkMode) {
       document.documentElement.classList.remove("dark");
@@ -50,31 +50,30 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300
-      ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? "backdrop-blur-md bg-white/70 dark:bg-[#0a1628]/70 shadow-lg"
           : "bg-white dark:bg-[#0a1628]"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
         <a
           href="#home"
-          className="text-2xl font-bold text-cyan-400 tracking-wide"
+          className="text-xl sm:text-2xl font-bold text-cyan-400 tracking-wide"
         >
           David
         </a>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
           {links.map((link) => (
             <li key={link.name}>
               <a
                 href={link.href}
                 className="
-                  relative text-gray-800 dark:text-white
+                  relative text-sm lg:text-base text-gray-800 dark:text-white
                   hover:text-cyan-400 transition
                   after:content-['']
                   after:absolute after:left-0 after:-bottom-1
@@ -91,17 +90,18 @@ const Navbar = () => {
         </ul>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
 
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="
-              w-10 h-10 rounded-full
+              w-9 h-9 sm:w-10 sm:h-10 rounded-full
               bg-gray-200 dark:bg-gray-700
               flex items-center justify-center
               transition hover:scale-110
             "
+            aria-label="Toggle Theme"
           >
             {darkMode ? (
               <FiSun size={18} className="text-yellow-400" />
@@ -112,8 +112,9 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-800 dark:text-white"
+            className="md:hidden text-gray-800 dark:text-white p-1"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
           >
             {isOpen ? <FiX size={26} /> : <FiMenu size={26} />}
           </button>
@@ -121,12 +122,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <ul className="
-          md:hidden flex flex-col items-center gap-6 py-8
+          md:hidden flex flex-col items-center gap-5 py-6
           bg-white dark:bg-[#0a1628]
           border-t border-gray-200 dark:border-gray-700
+          shadow-xl transition-all
         ">
           {links.map((link) => (
             <li key={link.name}>
@@ -134,8 +136,8 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className="
-                  text-lg text-gray-800 dark:text-white
-                  hover:text-cyan-400 transition
+                  text-base sm:text-lg text-gray-800 dark:text-white
+                  hover:text-cyan-400 transition font-medium
                 "
               >
                 {link.name}

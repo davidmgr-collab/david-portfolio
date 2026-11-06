@@ -12,7 +12,6 @@ import { SiMysql } from "react-icons/si";
 import { MdApi } from "react-icons/md";
 import { FiLayout } from "react-icons/fi";
 
-
 const skills = [
   { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
   { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
@@ -26,38 +25,30 @@ const skills = [
   { name: "UI/UX", icon: <FiLayout className="text-pink-400" /> },
 ];
 
-
 const Skills = () => {
-
   return (
-
     <section
       id="skills"
       className="
-        py-24
+        py-16 md:py-24
         bg-white dark:bg-[#0a1628]
-        transition
+        transition-colors duration-300
       "
     >
-
-      <div className="max-w-5xl mx-auto px-6 text-center">
-
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
 
         {/* Title */}
         <h2
           className="
-          text-3xl md:text-4xl
-          font-bold mb-4
-          text-black dark:text-white
+            text-3xl sm:text-4xl
+            font-bold mb-3 sm:mb-4
+            text-black dark:text-white
           "
         >
           Skills
         </h2>
 
-
-        <div className="w-20 h-1 bg-cyan-400 mx-auto mb-14 rounded-full"></div>
-
-
+        <div className="w-16 sm:w-20 h-1 bg-cyan-400 mx-auto mb-10 sm:mb-14 rounded-full"></div>
 
         {/* Skills Grid */}
         <div className="
@@ -65,90 +56,57 @@ const Skills = () => {
           grid-cols-2 
           sm:grid-cols-3 
           md:grid-cols-5 
-          gap-6
+          gap-4 sm:gap-6
         ">
-
-
-          {skills.map((skill)=>(
-
-
+          {skills.map((skill) => (
             <div
               key={skill.name}
               className="
                 group
-
                 bg-gray-100 dark:bg-[#111c33]
-
                 border
-                border-gray-300 dark:border-gray-800
-
+                border-gray-200 dark:border-gray-800
                 hover:border-cyan-400
-
                 rounded-2xl
-
-                py-8 px-4
-
-                flex flex-col items-center justify-center gap-4
-
+                py-6 sm:py-8 px-4
+                flex flex-col items-center justify-center gap-3 sm:gap-4
                 transition-all duration-300
-
                 hover:-translate-y-2
-
                 hover:shadow-xl
-                hover:shadow-cyan-500/10
+                hover:shadow-cyan-500/20
+                cursor-pointer
               "
             >
-
-
-
               {/* Icon */}
               <div
                 className="
-                text-4xl
-                group-hover:scale-110
-                transition-transform duration-300
+                  text-3xl sm:text-4xl
+                  group-hover:scale-125
+                  transition-transform duration-300
                 "
               >
                 {skill.icon}
               </div>
 
-
-
-
               {/* Skill Name */}
               <span
                 className="
-                font-medium
-
-                text-gray-700 dark:text-gray-200
-
-                group-hover:text-black
-                dark:group-hover:text-white
-
-                transition
+                  text-sm sm:text-base font-medium
+                  text-gray-700 dark:text-gray-200
+                  group-hover:text-black
+                  dark:group-hover:text-white
+                  transition-colors
                 "
               >
                 {skill.name}
               </span>
-
-
-
             </div>
-
-
           ))}
-
-
         </div>
 
-
       </div>
-
-
     </section>
-
   );
 };
-
 
 export default Skills;
