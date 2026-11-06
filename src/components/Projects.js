@@ -12,7 +12,7 @@ const Projects = () => {
         "https://github.com/davidmgr-collab/sozi-attendance-system",
       demo:
         "https://sozi-attendance.vercel.app",
-      image: "/aw.png",
+      image: "/sozi.jpg",
     },
 
     {
@@ -25,7 +25,7 @@ const Projects = () => {
         "https://github.com/davidmgr-collab/kagogo-dashboard",
       demo:
         "https://kagogo-dashboard.vercel.app",
-      image: "/ab.png",
+      image: "/kagogo.jpg",
     },
 
     {
@@ -38,7 +38,7 @@ const Projects = () => {
         "https://github.com/davidmgr-collab/hmms-bugarama-mining",
       demo:
         "https://hmms-bugarama.vercel.app",
-      image: "/ag.png",
+      image: "/nbm.png",
     },
 
     {
