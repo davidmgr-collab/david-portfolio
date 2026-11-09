@@ -8,7 +8,15 @@ import {
   FaGitAlt 
 } from "react-icons/fa";
 
-import { SiMysql } from "react-icons/si";
+import { 
+  SiMysql, 
+  SiTypescript, 
+  SiNextdotjs, 
+  SiDart, 
+  SiFlutter,
+  SiMongodb   // Used to represent NoSQL
+} from "react-icons/si";
+
 import { MdApi } from "react-icons/md";
 import { FiLayout } from "react-icons/fi";
 
@@ -16,11 +24,16 @@ const skills = [
   { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
   { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
   { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+  { name: "TypeScript", icon: <SiTypescript className="text-blue-500" /> },
   { name: "React", icon: <FaReact className="text-cyan-400" /> },
+  { name: "Next.js", icon: <SiNextdotjs className="text-black dark:text-white" /> },
   { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
   { name: "Python", icon: <FaPython className="text-blue-400" /> },
+  { name: "Dart", icon: <SiDart className="text-sky-500" /> },
+  { name: "Flutter", icon: <SiFlutter className="text-cyan-400" /> },
   { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
   { name: "MySQL", icon: <SiMysql className="text-blue-400" /> },
+  { name: "NoSQL", icon: <SiMongodb className="text-green-500" /> },
   { name: "REST APIs", icon: <MdApi className="text-purple-400" /> },
   { name: "UI/UX", icon: <FiLayout className="text-pink-400" /> },
 ];

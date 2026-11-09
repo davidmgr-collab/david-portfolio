@@ -71,7 +71,7 @@ const Contact = () => {
             hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30
           "
         >
-          Chat & Tell  Me kbx!!!!!!!!
+          Chat & Describe Projects You Want!!!!!!!!
         </button>
 
       </div>
