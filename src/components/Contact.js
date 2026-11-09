@@ -71,7 +71,7 @@ const Contact = () => {
             hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30
           "
         >
-          Say Hello
+          Chat & Tell  Me kbx!!!!!!!!
         </button>
 
       </div>
@@ -94,7 +94,7 @@ const Contact = () => {
             {/* Header */}
             <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-4">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                Say Hello David👋
+                Say Hello To  David👋
               </h3>
 
               <button
