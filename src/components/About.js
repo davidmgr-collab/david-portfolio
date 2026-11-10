@@ -61,7 +61,7 @@ const About = () => {
         {/* ========== DOWNLOAD RESUME SECTION ========== */}
         <div className="mt-10 sm:mt-12">
           <a
-            href="/resume.pdf"          // ← Change this path to your actual PDF file
+            href="/David_Mugiraneza_Resume.pdf"
             download="David_Mugiraneza_Resume.pdf"
             className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
           >
